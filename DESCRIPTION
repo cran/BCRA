@@ -1,0 +1,13 @@
+Package: BCRA
+Type: Package
+Title: Breast Cancer Risk Assessment
+Version: 1.0
+Date: 2015-04-28
+Author: Fanni Zhang
+Maintainer: Fanni Zhang <zhangf@imsweb.com>
+Description: Functions provide risk projections of invasive breast cancer based on Gail model according to National Cancer Institute's Breast Cancer Risk Assessment Tool algorithm for specified race/ethnic groups and age intervals.
+License: GPL (>= 2)
+Packaged: 2015-04-29 15:09:23 UTC; zhangf10
+NeedsCompilation: no
+Repository: CRAN
+Date/Publication: 2015-04-29 18:01:22
