@@ -10,11 +10,11 @@ List all records and errors
     For each of the records, the record is listed followed by a line which gives some indication as to where the error occured.     
 }
 \usage{
-error.table.all(dat, Raw_Ind = 1)
+error.table.all(data, Raw_Ind=1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{dat}{
+  \item{data}{
    A data set containing all the required input data needed to perform risk projections, 
    such as initial age, projection age, BrCa relative risk covariates and race. See \code{exampledata} for details.
    }
@@ -32,4 +32,5 @@ error.table.all(dat, Raw_Ind = 1)
 \seealso{
   \code{\link{recode.check}}, \code{\link{error.table}}
 }
+
 

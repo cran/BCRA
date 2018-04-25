@@ -1,20 +1,20 @@
 check.summary <-
-function(dat, iloop=1, Raw_Ind=1){
+function(data, Raw_Ind=1, Avg_White=0){
     ### list mean summary of "Error_Ind, AbsRsk, RR_Star1 and RR_Star2"
     mean_table<-array(NA, dim=c(4,6))
     colnames(mean_table) <- c("Variable", "Label", "Mean", "StdDev", "N", "NMiss")
-    check_cov <- recode.check(dat, Raw_Ind)
+    check_cov <- recode.check(data, Raw_Ind)
     Error_Ind <- as.numeric(as.character(check_cov$Error_Ind))
-    RR_Star <- relative.risk(dat,Raw_Ind)
+    RR_Star <- relative.risk(data,Raw_Ind)
     RR_Star1 <- RR_Star$RR_Star1
     RR_Star2 <- RR_Star$RR_Star2
 
 
-    AbsRisk <- absolute.risk(dat, iloop, Raw_Ind)
-    if (iloop==1){
+    AbsRisk <- absolute.risk(data, Raw_Ind, Avg_White)
+    if (Avg_White==0){
     mean_table[1:4,1] <- c("Error_Ind", "AbsRisk", "RR_Star1", "RR_Star2")
     }
-    if (iloop==2){
+    if (Avg_White==1){
     mean_table[1:4,1] <- c("Error_Ind", "AbsRisk_Avg", "RR_Star1", "RR_Star2")
     }
     mean_table[1:4,2] <- c("If mean not 0, implies ERROR in file", "Abs risk(%) of BrCa in age interval [T1,T2)", "Relative risk age lt 50", "Relative risk age ge 50")

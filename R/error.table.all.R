@@ -1,7 +1,7 @@
 error.table.all <-
-function(dat, Raw_Ind=1){
+function(data, Raw_Ind=1){
     ### list all possible errors for BrCa absolute risk projections
-    check_cov <- recode.check(dat, Raw_Ind)
+    check_cov <- recode.check(data, Raw_Ind)
     Error_Ind <- check_cov$Error_Ind
 
     R_Hyp <- as.numeric(as.character(check_cov$R_Hyp))
@@ -20,10 +20,10 @@ function(dat, Raw_Ind=1){
         print("NO ERROR!") 
     }
     if (length(which(Error_Ind!=0))!=0){
-        error_table <- array("*", dim=c(length(dat$ID)*2,10))
-        origin <- cbind(dat$ID, dat$T1, dat$T2, dat$N_Biop, dat$HypPlas, R_Hyp, dat$AgeMen, dat$Age1st, dat$N_Rels, dat$Race)
-        compare <- cbind(dat$ID, set_T1_missing, set_T2_missing, NB_Cat, set_HyperP_missing, set_R_Hyp_missing, AM_Cat, AF_Cat, NR_Cat, CharRace)
-        for (i in 1:length(dat$ID)){
+        error_table <- array("*", dim=c(length(data$ID)*2,10))
+        origin <- cbind(data$ID, data$T1, data$T2, data$N_Biop, data$HypPlas, R_Hyp, data$AgeMen, data$Age1st, data$N_Rels, data$Race)
+        compare <- cbind(data$ID, set_T1_missing, set_T2_missing, NB_Cat, set_HyperP_missing, set_R_Hyp_missing, AM_Cat, AF_Cat, NR_Cat, CharRace)
+        for (i in 1:length(data$ID)){
              error_table[2*i-1,] <- origin[i,]
              error_table[2*i,] <- compare[i,]
         }

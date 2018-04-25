@@ -8,11 +8,11 @@ Recode and check the relative risk covariate values
 A function to recode the relative risk covariates and check errors.
 }
 \usage{
-recode.check(dat, Raw_Ind=1)
+recode.check(data, Raw_Ind=1)
 }
 
 \arguments{
-  \item{dat}{
+  \item{data}{
    A data set containing all the required input data needed to perform risk projections, 
    such as initial age, projection age, BrCa relative risk covariates and race. See \code{exampledata} for details.
    }
@@ -86,16 +86,26 @@ are named as \code{NB_Cat}, \code{AM_Cat}, \code{AF_Cat} and \code{NR_Cat} for \
     For remaining relative risk covariates, \code{AgeMen}, \code{Age1st} and \code{N_Rels}:
     \tabular{ll}{
     AgeMen   \tab Age at menarchy must be postive integer less than or equal to initial age T1.\cr
-             \tab NOTE: For African-American women AgeMen<=11 are grouped with AgeMen=12 \cr 
-             \tab or 13.\cr
+             \tab NOTE: (1) For African-American women AgeMen<=11 are grouped with AgeMen=12 \cr 
+             \tab or 13. (2) For US Born Hispanic women  AgeMen is not included in the RR model \cr
+             \tab and all values for this variable are recoded to 0. \cr            
     Age1st   \tab Age at 1st live birth must be postive integer greater than equal to AgeMen \cr
              \tab and less than or equal to initial age T1. \cr
-             \tab NOTE: For African-American women, Age1st is not included in the RR model \cr
-             \tab and all values for this variable are recoded to 0. \cr
+             \tab NOTE: (1) For African-American women, Age1st is not included in the RR model \cr
+             \tab and all values for this variable are recoded to 0. (2) For US Born and Foreign \cr
+             \tab Born Hispanic women, the recoding for this variable follows: \cr
+    }
+    \tabular{llr}{
+    Age1st   \tab 19 and younger or 99 (unk) \tab 0 \cr
+             \tab 20 - 29                    \tab 1 \cr
+             \tab 30+ or 98 (nulliparous) and not 99       \tab 2 \cr
+    }
+    \tabular{ll}{
     N_Rels   \tab The number of 1st degree relatives with BrCa must be 0,1,2....  \cr
-             \tab NOTE: For Asian-Americans Race=6-11, the number of 1st degree relative \cr
-             \tab coded value of 2 gets grouped with 1. \cr
-    }  
+             \tab NOTE: For Asian-Americans Race=6-11 and Hispanic-Americans (US and foreign born), \cr 
+             \tab the number of 1st degree relative coded value of 2 gets grouped with 1. \cr
+    }
+
 }
 \value{
 A data frame containing the error indictors, recoded covariates as well as other checking 

@@ -28,19 +28,15 @@
    \tabular{ll}{
    1=Wh \tab White 1983-87 SEER rates (rates used in NCI BCRAT) \cr
    2=AA \tab African-American \cr
-   3=Hi \tab Hispanic-American \cr
+   3=HU \tab Hispanic-American (US born) 1995-04 \cr
    4=NA \tab Other (Native American and unknown race) \cr
-   5=Wo \tab White 1995-03 SEER rates (rates under further investigation) \cr
+   5=HF \tab Hispanic-American (Foreign born) 1995-04 \cr
    6=Ch \tab Chinese-American \cr
    7=Ja \tab Japanese-American \cr
    8=Fi \tab Filipino-American \cr
    9=Hw \tab Hawaiian-American \cr
    10=oP \tab Other Pacific Islander \cr
    11=oA \tab Other Asian \cr
-   }
-   Note that Hispanic and other ethnic women risks are based on white women log relative
-risks. Hispanic women risk are based on Hispanic seer rates while other women risk 
-are based on white women seer rates. Avgerage other women rates are also based on
-average white women seer rates as well.                   
+   }                  
 }
 

@@ -1,1 +1,2 @@
+import(stats)
 export(recode.check,relative.risk,absolute.risk,check.summary,error.table,error.table.all,risk.summary,list.constants)

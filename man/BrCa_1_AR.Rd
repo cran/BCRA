@@ -13,8 +13,9 @@ Breast cancer 1-Attributable Risk
   \describe{
     \item{\code{Wh.Gail}}{White}
     \item{\code{AA.CARE}}{African-American}
-    \item{\code{Hi.Gail}}{Hispanic-American}
-    \item{\code{NA.Gail}}{Native American and unknown race}
+    \item{\code{HU.Gail}}{Hispanic-American (US born)}
+    \item{\code{NA.Gail}}{Other (Native American and unknown race)}
+    \item{\code{HF.Gail}}{Hispanic-American (Foreign born)}
     \item{\code{Asian.AABCS}}{Asian-American}
   }
 }

@@ -14,9 +14,9 @@ from 20 to 90 by 5 years.
   \describe{
     \item{\code{Wh.1983_87}}{White SEER 1983:1987}
     \item{\code{AA.1994_98}}{African-American SEER 1994:1998}
-    \item{\code{Hi.1990_96}}{Hispanic-American 1990:1996}
+    \item{\code{HU.1995_04}}{Hispanic-American (US born) 1995:2004}
     \item{\code{NA.1983_87}}{Native American and unknown race 1983:1987}
-    \item{\code{Wo.1995_03}}{White SEER 1995:2003}
+    \item{\code{HF.1995_04}}{Hispanic-American (Foreign born) 1995:2004}
     \item{\code{Ch.1998_02}}{Chinese-American SEER 18 1998:2002}
     \item{\code{Ja.1998_02}}{Japanese-American SEER 18 1998:2002}
     \item{\code{Fi.1998_02}}{Filipino-American SEER 18 1998:2002}

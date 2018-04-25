@@ -9,10 +9,10 @@ Estimate relative risks
 A function to estimate relative risks for risk factor combinations
 }
 \usage{
-relative.risk(dat, Raw_Ind = 1)
+relative.risk(data, Raw_Ind=1)
 }
 \arguments{
-  \item{dat}{
+  \item{data}{
    A data set containing all the required input data needed to perform risk projections, 
    such as initial age, projection age, BrCa relative risk covariates and race. See \code{exampledata} for details.
    }

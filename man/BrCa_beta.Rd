@@ -13,8 +13,9 @@ The logistic regression coefficients derived from the Gail model.
   \describe{
     \item{\code{Wh.Gail}}{White, Gail model}
     \item{\code{AA.CARE}}{African-American, Care model}
-    \item{\code{Hi.Gail}}{Hispanic-American, Gail model}
-    \item{\code{NA.Gail}}{Native American and unknown race, Gail model}
+    \item{\code{HU.Gail}}{Hispanic-American (US born), Gail model}
+    \item{\code{NA.Gail}}{Other (Native American and unknown race), Gail model}
+    \item{\code{HF.Gail}}{Hispanic-American (Foreign born), Gail model}
     \item{\code{Asian.AABCS}}{Asian-American, AABCS model}
   }
 }

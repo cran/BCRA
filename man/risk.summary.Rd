@@ -10,18 +10,13 @@
  
 }
 \usage{
-risk.summary(dat, iloop = 1, Raw_Ind = 1)
+risk.summary(data, Raw_Ind=1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{dat}{
+  \item{data}{
    A data set containing all the required input data needed to perform risk projections, 
    such as initial age, projection age, BrCa relative risk covariates and race. See \code{exampledata} for details.
-   }
-   \item{iloop}{Loop indicator.
-   \code{iloop}=1, calculate absolute risks; 
-   \code{iloop}=2, calculate average absolute risks. 
-   The default value is 1.
    }
   \item{Raw_Ind}{
    The raw file indicator with default value 1.

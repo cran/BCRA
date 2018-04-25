@@ -1,5 +1,5 @@
 absolute.risk <-
-function(dat, iloop=1, Raw_Ind=1){
+function(data, Raw_Ind=1, Avg_White=0){
     ### set up lambda1*, lambda2, beta & F(t) with known constants used in the nci brca risk disk
     ## lambda1_Star, BrCa composite incidences
     # SEER BrCa incidence rates (current) non-hispanic white women, SEER white 1983:87
@@ -14,12 +14,15 @@ function(dat, iloop=1, Raw_Ind=1){
     # SEER black 1994-98
     Black_lambda1 <- c(0.00002696, 0.00011295, 0.00031094, 0.00067639, 0.00119444, 0.00187394, 0.00241504, 
                        0.00291112, 0.00310127, 0.00366560, 0.00393132, 0.00408951, 0.00396793, 0.00363712)
-    # SEER hspan 1990:96
-    Hspnc_lambda1 <- c(0.00002000, 0.00007100, 0.00019700, 0.00043800, 0.00081100, 0.00130700, 0.00157400, 
-                       0.00185700, 0.00215100, 0.00251200, 0.00284600, 0.00275700, 0.00252300, 0.00203900)
+    # SEER Ca Hisp 1995-2004
+    Hspnc_lambda1 <- c(0.0000166, 0.0000741, 0.0002740, 0.0006099, 0.0012225, 0.0019027, 0.0023142, 
+                       0.0028357, 0.0031144, 0.0030794, 0.0033344, 0.0035082, 0.0025308, 0.0020414)
     # SEER white 1983:87
     Other_lambda1 <- c(0.00001000, 0.00007600, 0.00026600, 0.00066100, 0.00126500, 0.00186600, 0.00221100, 
                        0.00272100, 0.00334800, 0.00392300, 0.00417800, 0.00443900, 0.00442100, 0.00410900)
+    # SEER Ca Hisp 1995-2004
+    FHspnc_lambda1 <- c(0.0000102, 0.0000531, 0.0001578, 0.0003602, 0.0007617, 0.0011599, 0.0014111,
+                        0.0017245,  0.0020619, 0.0023603, 0.0025575, 0.0028227, 0.0028295, 0.0025868)
     # seer18 chinese  1998:02
     Chnes_lambda1 <- c(0.000004059636, 0.000045944465, 0.000188279352, 0.000492930493, 0.000913603501,
                        0.001471537353, 0.001421275482, 0.001970946494, 0.001674745804, 0.001821581075,
@@ -57,12 +60,15 @@ function(dat, iloop=1, Raw_Ind=1){
     # NCHS black 1996-00
     Black_lambda2 <- c(0.00074354, 0.00101698, 0.00145937, 0.00215933, 0.00315077, 0.00448779, 0.00632281, 
                        0.00963037, 0.01471818, 0.02116304, 0.03266035, 0.04564087, 0.06835185, 0.13271262)
-    # NCHS hspan 1990:96
-    Hspnc_lambda2 <- c(0.00043700, 0.00053300, 0.00070000, 0.00089700, 0.00116300, 0.00170200, 0.00264600,
-                       0.00421600, 0.00696000, 0.01086700, 0.01685800, 0.02515600, 0.04186600, 0.08947600)
+    # SEER Ca Hisp 1995-2004
+    Hspnc_lambda2 <- c(0.0003561, 0.0004038, 0.0005281, 0.0008875, 0.0013987, 0.0020769, 0.0030912,
+                       0.0046960, 0.0076050, 0.0120555, 0.0193805, 0.0288386, 0.0429634, 0.0740349)                    
     # NCHS white 1985:87
     Other_lambda2 <- c(0.00049300, 0.00053100, 0.00062500, 0.00082500, 0.00130700, 0.00218100, 0.00365500, 
                        0.00585200, 0.00943900, 0.01502800, 0.02383900, 0.03883200, 0.06682800, 0.14490800)
+    # SEER Ca Hisp 1995-2004
+    FHspnc_lambda2 <- c(0.0003129, 0.0002908, 0.0003515, 0.0004943, 0.0007807, 0.0012840, 0.0020325,
+                        0.0034533, 0.0058674, 0.0096888, 0.0154429, 0.0254675, 0.0448037, 0.1125678) 
     # NCHS mortality chinese  1998:02
     Chnes_lambda2 <- c(0.000210649076, 0.000192644865, 0.000244435215, 0.000317895949, 0.000473261994,
                        0.000800271380, 0.001217480226, 0.002099836508, 0.003436889186, 0.006097405623,
@@ -90,8 +96,9 @@ function(dat, iloop=1, Raw_Ind=1){
     ## F(t), 1-Attributable Risk=F(t) 
     White_1_AR <- c(0.5788413, 0.5788413)
     Black_1_AR <- c(0.72949880, 0.74397137)
-    Hspnc_1_AR <- c(0.5788413, 0.5788413) 
+    Hspnc_1_AR <- c(0.749294788397, 0.778215491668) 
     Other_1_AR <- c(0.5788413, 0.5788413)
+    FHspnc_1_AR <- c(0.428864989813, 0.450352338746)
     Asian_1_AR <- c(0.47519806426735, 0.50316401683903)
 
     ### intialize "avg white women" and "avg" other (native american women) rate for each year in the 5yr age cat
@@ -102,18 +109,18 @@ function(dat, iloop=1, Raw_Ind=1){
 
     ### initialize rate vectors with the correct rates for each woman under study based on her race
     ## for i=1 to 11, when Race=i, Wrk_lambda1=Wrk_lambda1_all[i], Wrk_lambda2=Wrk_lambda2_all[i], Wrk_Beta<-Wrk_Beta_all[i], Wrk_1_AR=Wrk_1_AR_all[i]
-    Wrk_lambda1_all <- rbind(White_lambda1, Black_lambda1, Hspnc_lambda1, Other_lambda1, White_nlambda1, Chnes_lambda1, Japns_lambda1, Filip_lambda1, Hawai_lambda1, OtrPI_lambda1, OtrAs_lambda1)
-    Wrk_lambda2_all <- rbind(White_lambda2, Black_lambda2, Hspnc_lambda2, Other_lambda2, White_nlambda2, Chnes_lambda2, Japns_lambda2, Filip_lambda2, Hawai_lambda2, OtrPI_lambda2, OtrAs_lambda2) 
-    Wrk_1_AR_all <- rbind(White_1_AR, Black_1_AR, Hspnc_1_AR, Other_1_AR, White_1_AR, Asian_1_AR, Asian_1_AR, Asian_1_AR, Asian_1_AR, Asian_1_AR, Asian_1_AR)
+    Wrk_lambda1_all <- rbind(White_lambda1, Black_lambda1, Hspnc_lambda1, Other_lambda1, FHspnc_lambda1, Chnes_lambda1, Japns_lambda1, Filip_lambda1, Hawai_lambda1, OtrPI_lambda1, OtrAs_lambda1)
+    Wrk_lambda2_all <- rbind(White_lambda2, Black_lambda2, Hspnc_lambda2, Other_lambda2, FHspnc_lambda2, Chnes_lambda2, Japns_lambda2, Filip_lambda2, Hawai_lambda2, OtrPI_lambda2, OtrAs_lambda2) 
+    Wrk_1_AR_all <- rbind(White_1_AR, Black_1_AR, Hspnc_1_AR, Other_1_AR, FHspnc_1_AR, Asian_1_AR, Asian_1_AR, Asian_1_AR, Asian_1_AR, Asian_1_AR, Asian_1_AR)
 
-    AbsRisk <- rep(NA,dim(dat)[1])
+    AbsRisk <- rep(NA,dim(data)[1])
     ## obtain IDs without any error
-    check_cov <- recode.check(dat, Raw_Ind)
+    check_cov <- recode.check(data, Raw_Ind)
     Error_Ind <- check_cov$Error_Ind
     IDwoERR <- which(Error_Ind==0)
     for (i in IDwoERR){
-         obs <- dat[i,]
-         RR_Star <- relative.risk(dat,Raw_Ind)
+         obs <- data[i,]
+         RR_Star <- relative.risk(data,Raw_Ind)
          rrstar1 <- RR_Star$RR_Star1[i]
          rrstar2 <- RR_Star$RR_Star2[i]
 
@@ -127,7 +134,7 @@ function(dat, iloop=1, Raw_Ind=1){
          lambda2.temp <- array(0, dim=c(14,5))
 
          ## calculate abs risk  
-         if (iloop == 1){
+         if (Avg_White == 0){
              One_AR1 <- Wrk_1_AR_all[obs$Race,1]
              One_AR2 <- Wrk_1_AR_all[obs$Race,2]
              # (1-AR)*RR at ages < 50
@@ -143,13 +150,13 @@ function(dat, iloop=1, Raw_Ind=1){
              lambda2 <- c(t(lambda2.temp))
          }
          ## calculate avg abs risk
-         if (iloop == 2){
+         if (Avg_White == 1){
              # define One_AR_RR
              One_AR_RR <- rep(1, 70)
              lambda1.temp[,1:(dim(lambda1.temp)[2])] <- Wrk_lambda1_all[obs$Race,]
              lambda2.temp[,1:(dim(lambda2.temp)[2])] <- Wrk_lambda2_all[obs$Race,]
              # if Race=1, 4 or 5, lambda1.temp[race,1:5]<-Avg_lambda1[race,],lambda2.temp[race,1:5]<-Avg_lambda2[race,]
-             if (obs$Race==1 | obs$Race==4 | obs$Race==5){
+             if (obs$Race==1 | obs$Race==4){
                  lambda1.temp <- Avg_lambda1
                  lambda2.temp <- Avg_lambda2
              }
