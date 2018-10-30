@@ -1,11 +1,11 @@
-d5e736bcbad5b3d6164952aafe8ef229 *DESCRIPTION
-dfadd5a511fb090c09cf8d7acf8e5181 *NAMESPACE
-d3c5b038f2eea13af096461abb79373c *R/absolute.risk.R
+3080155bb94d6090397941e80596512a *DESCRIPTION
+6861b98572dc9ca530b191541d6c24c8 *NAMESPACE
+9f63d673f6eb1e50f3eac26cf9e4c568 *R/absolute.risk.R
 72030fbd6186d0d628a99f6d9336f35e *R/check.summary.R
 2ff8badf5c1165a33d5a4fea140e1198 *R/error.table.R
 24afb655285f6a83893a33c1e54e823c *R/error.table.all.R
 d315226186c3876a38a0bcd3b443fe60 *R/list.constants.R
-fdad7fcc7cd83a78d277772de73efe5c *R/recode.check.R
+bb38bcc1139c32ad9e1866bd7abc3e48 *R/recode.check.R
 13cacc477729a951f04a271f39a3c10e *R/relative.risk.R
 563f84c7fa9cadb547fc90551f71318e *R/risk.summary.R
 32d58a1bf09304fdb84b3e18c4feb98d *data/BrCa_1_AR.rda

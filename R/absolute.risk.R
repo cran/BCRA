@@ -115,12 +115,12 @@ function(data, Raw_Ind=1, Avg_White=0){
 
     AbsRisk <- rep(NA,dim(data)[1])
     ## obtain IDs without any error
+    RR_Star <- relative.risk(data,Raw_Ind)
     check_cov <- recode.check(data, Raw_Ind)
     Error_Ind <- check_cov$Error_Ind
     IDwoERR <- which(Error_Ind==0)
     for (i in IDwoERR){
          obs <- data[i,]
-         RR_Star <- relative.risk(data,Raw_Ind)
          rrstar1 <- RR_Star$RR_Star1[i]
          rrstar2 <- RR_Star$RR_Star2[i]
 
