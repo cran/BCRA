@@ -32,14 +32,14 @@ function include initial and projection age, recoded covariates using function
 For further analysis, a data frame is created from the function \code{risk.summary}, which includes age, duration of the 
 projection time interval, covariates and the projected risk.
 
-The version 2.1 includes absolute risk projections for Hispanic women (US born and Foreign born) 
+The version 2.0 includes absolute risk projections for Hispanic women (US born and Foreign born) 
 based on race specific RR risk models developed on the San Francisco Bay Area Breast
 Cancer Study (SFBCS). Race specific attributable risks, breast cancer composite incidences and competing
 hazards are added to the updated package.
 
 }
 \author{
-Fanni Zhang <fannizhang@gmail.com>
+Fanni Zhang <zhangf@imsweb.com>
 }
 \references{
 Banegas MP, John EM, Slattery ML, Gomez SL, Yu M, LaCroix AZ, Pee D, Chlebowski RT, Hines LM, Thompson CA, Gail MH. 

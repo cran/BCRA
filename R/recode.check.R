@@ -107,7 +107,7 @@ function(data, Raw_Ind=1){
     ###         (4) groups N_Rels=2 with N_Rels=1;
 
     NB_Cat[which((data$Race %in% c(3,5)) & (data$N_Biop %in% c(0,99)))] <- 0
-    NB_Cat[which(data$Race %in% c(3,5)) & (NB_Cat==2)] <- 1
+    NB_Cat[which((data$Race %in% c(3,5)) & NB_Cat==2)] <- 1
 
     AM_Cat[which(data$Race==3)] <- 0
    

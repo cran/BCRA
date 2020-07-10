@@ -1,11 +1,11 @@
-5209a848803a6b412376e8d2f1ee49bb *DESCRIPTION
+2047e18f108c7e376d231146c0b8c615 *DESCRIPTION
 6861b98572dc9ca530b191541d6c24c8 *NAMESPACE
 9f63d673f6eb1e50f3eac26cf9e4c568 *R/absolute.risk.R
 72030fbd6186d0d628a99f6d9336f35e *R/check.summary.R
 2ff8badf5c1165a33d5a4fea140e1198 *R/error.table.R
 24afb655285f6a83893a33c1e54e823c *R/error.table.all.R
 d315226186c3876a38a0bcd3b443fe60 *R/list.constants.R
-bb38bcc1139c32ad9e1866bd7abc3e48 *R/recode.check.R
+7c70bfd7e159297bfcdf6c819b244441 *R/recode.check.R
 13cacc477729a951f04a271f39a3c10e *R/relative.risk.R
 563f84c7fa9cadb547fc90551f71318e *R/risk.summary.R
 32d58a1bf09304fdb84b3e18c4feb98d *data/BrCa_1_AR.rda
@@ -13,7 +13,7 @@ bb38bcc1139c32ad9e1866bd7abc3e48 *R/recode.check.R
 37915b2aaf1aa54a9082d6ffddc9fba8 *data/BrCa_lambda1.rda
 b9731c5d9d2b3985fe1e9af9ef691607 *data/BrCa_lambda2.rda
 2c8ad22e2f3b696c6292c9fa692fe404 *data/exampledata.rda
-50331b1ab3921f140c57bf603f68afb7 *man/BCRA-package.Rd
+b23391a2c3e1e950bd9b7a2519344e10 *man/BCRA-package.Rd
 c3aa9430639bfc418dd8ebb26543006b *man/BrCa_1_AR.Rd
 b848f730db20ef8a86bce66cb492d8b4 *man/BrCa_beta.Rd
 9e143e75dc1a4d87d36f8bfd6b1c7baf *man/BrCa_lambda1.Rd
